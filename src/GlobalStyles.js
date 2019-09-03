@@ -24,9 +24,9 @@ export const GlobalStyles = createGlobalStyle`
     outline: 0;
   }
 
-  body {efefe;
+  body {
     height: 100vh;
-    background: #f
+    background: #fefefe;
     margin: 0 auto;
     max-width: 500px;
     overscroll-behavior: none;
