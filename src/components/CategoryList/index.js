@@ -1,14 +1,19 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import { Category } from "../Category"
 import { List, Element} from "./styles"
-import { categories } from "../../../api/db.json"
 
 export const CategoryList = () => {
+  const [Categories, setCategories] = useState([])
+  useEffect( function (){
+    window.fetch("https://petgram-api-jeanpier.now.sh/categories")
+      .then(res => res.json())
+      .then(response => setCategories(response))
+  }, [])
   return (
     <List>
       {
-        categories.map(element => <Element key={element.id}>
+        Categories.map(element => <Element key={element.id}>
             <Category {...element} />
         </Element>)        
       }
