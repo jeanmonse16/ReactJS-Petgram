@@ -2,17 +2,31 @@ import React, { Fragment, useEffect, useState } from "react"
 
 import { Category } from "../Category"
 import { List, Element} from "./styles"
+import { Loader } from "../../Styles/Loader"
+
+function useCategoriesData(){
+  const [Categories, setCategories] = useState([])
+  const [Loading, setLoading] = useState(false)
+
+  useEffect( function (){
+    setLoading(true)
+    window.fetch("https://petgram-api-jeanpier.now.sh/categories")
+      .then(res => res.json())
+      .then(response => {
+        setCategories(response)
+        setLoading(false)
+      })
+      
+  }, [])
+
+  return { Categories, Loading} 
+
+}
 
 export const CategoryList = () => {
 
-  const [Categories, setCategories] = useState([])
+  const {Categories, Loading} = useCategoriesData()
   const [ShowFixed, setShowFixed] = useState(false)
-
-  useEffect( function (){
-    window.fetch("https://petgram-api-jeanpier.now.sh/categories")
-      .then(res => res.json())
-      .then(response => setCategories(response))
-  }, [])
 
   useEffect( function(){
     const OnScroll = e => {
@@ -26,14 +40,18 @@ export const CategoryList = () => {
   )
 
   const RenderList = (fixed) => (
-    <List className={fixed ? "fixed" : ""}>
+    <List fixed={fixed} >
     {
       Categories.map(element => <Element key={element.id}>
-          <Category {...element} />
+          <Category {...element}/>
       </Element>)        
     }
   </List>
   )
+
+  if(Loading){
+    return  <Loader></Loader>
+  }
   
   return (
     <Fragment>
