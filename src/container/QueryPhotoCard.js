@@ -20,7 +20,9 @@ export const QueryPhotoCard = ({ id }) => (
   <Query query={query} variables={{ id }}>
     {
       ({ loading, error, data }) => {
-        const { photo } = data
+        if (loading) return <p> cargando </p>
+        console.log(data)
+        const { photo = {} } = data
         return <PhotoCard {...photo} />
       }
     }
