@@ -1,5 +1,16 @@
 import React from 'react'
+import Context from "../Context"
 
 export const NotLoggedIn = () => (
-  <h1> You have to login to see this</h1>
+  <Context.Consumer>
+    {
+      ({activateUser}) => (
+        <form onSubmit={activateUser} >
+          <button>
+            Iniciar Sesión
+          </button>
+        </form>
+      )
+    }
+  </Context.Consumer>
 )
