@@ -6,7 +6,10 @@ export const NotLoggedIn = () => (
   <Context.Consumer>
     {
       ({ activateUser }) => (
-        <UserForm onSubmit={activateUser} />
+        <>
+          <UserForm onSubmit={activateUser} title='Registrarse' />
+          <UserForm onSubmit={activateUser} title='Iniciar Sesión' />
+        </>
       )
     }
   </Context.Consumer>
