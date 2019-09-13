@@ -1,6 +1,6 @@
-import React from "react"
-import {gql} from "apollo-boost"
-import { Mutation } from "react-apollo"
+import React from 'react'
+import { gql } from 'apollo-boost'
+import { Mutation } from 'react-apollo'
 
 const PHOTO_LIKED = gql`
 mutation likeAnonymousPhoto($input: LikePhoto!) {
@@ -12,7 +12,7 @@ mutation likeAnonymousPhoto($input: LikePhoto!) {
 }
 `
 
-export const ToggleLikeMutation = ( {children} ) => {
+export const ToggleLikeMutation = ({ children }) => {
   return <Mutation mutation={PHOTO_LIKED}>
     {children}
   </Mutation>

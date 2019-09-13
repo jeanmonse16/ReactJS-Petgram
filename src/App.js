@@ -22,7 +22,7 @@ const NotAuth = () => (
   <Router>
     <NotLoggedIn path='/user' />
     <NotLoggedIn path='/favs' />
-      </Router>
+  </Router>
 )
 
 export const App = () => (
