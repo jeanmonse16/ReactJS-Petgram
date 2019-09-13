@@ -10,7 +10,7 @@ export const NotLoggedIn = () => (
         <>
           <RegisterMutation>
             {
-              (register) => {
+              (register, { loading, error }) => {
                 const onSubmit = ({ email, password }) => {
                   const input = { email, password }
                   const variables = { input }
@@ -18,7 +18,10 @@ export const NotLoggedIn = () => (
                     .then(activateUser)
                     .catch(e => console.log(e))
                 }
-                return <UserForm onSubmit={onSubmit} title='Registrarse' />
+
+                const ErrorMsg = error && 'El usuario ya existe o tienes algún problema.'
+
+                return <UserForm onSubmit={onSubmit} title='Registrarse' error={ErrorMsg} disabled={loading} />
               }
             }
           </RegisterMutation>
