@@ -10,10 +10,18 @@ import { LoggedIn } from './pages/LoggedIn'
 import { NotLoggedIn } from './pages/NotLoggedIn'
 import Context from './Context'
 import { Router } from '@reach/router'
+import {Error} from "./components/UserForm/styles"
+
+const NotLoggedInFav = () => (
+  <>
+  <Error>You need a registered user to see this section</Error>
+  <NotLoggedIn />
+  </>
+)
 
 const Auth = () => (
   <Router>
-    <Favs path='/favs' />
+    <Favs path='/favs' fav={true}/>
     <LoggedIn path='/user' />
   </Router>
 )
@@ -21,7 +29,7 @@ const Auth = () => (
 const NotAuth = () => (
   <Router>
     <NotLoggedIn path='/user' />
-    <NotLoggedIn path='/favs' />
+    <NotLoggedInFav path="/favs" />
   </Router>
 )
 

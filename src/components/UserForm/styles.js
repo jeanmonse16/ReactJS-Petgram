@@ -16,9 +16,9 @@ export const Input = styled.input`
     opacity: .3;
   }
 `
-
+//#8d00ff
 export const Button = styled.button`
-  background: #8d00ff;
+  background: green;
   border-radius: 3px;
   color: #fff;
   height: 32px;
