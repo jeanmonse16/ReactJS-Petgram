@@ -3,6 +3,7 @@ import { Context } from '../Context'
 import { UserForm } from '../components/UserForm'
 import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
+import { Layout } from '../components/Layout'
 
 export const NotLoggedIn = () => {
   const { activateUser } = useContext(Context)
@@ -23,7 +24,11 @@ export const NotLoggedIn = () => {
 
           const ErrorMsg = error && 'El usuario ya existe o tienes algún problema.'
 
-          return <UserForm onSubmit={onSubmit} title='Registrarse' error={ErrorMsg} disabled={loading} />
+          return (
+            <Layout title='Inicia tu Sesión'>
+              <UserForm onSubmit={onSubmit} title='Registrarse' error={ErrorMsg} disabled={loading} />
+            </Layout>
+          )
         }
       }
     </RegisterMutation>
@@ -42,9 +47,13 @@ export const NotLoggedIn = () => {
           }
 
           const ErrorMsg = error && 'La contraseña es incorrecta o el usuario no existe'
-          return <UserForm onSubmit={onSubmit} title='Iniciar Sesión' error={ErrorMsg} disabled={loading} />
+          return (
+            <Layout title=''>
+              <UserForm onSubmit={onSubmit} title='Iniciar Sesión' error={ErrorMsg} disabled={loading} />
+            </Layout>
+          )
         }
       }
     </LoginMutation>
-         </>
+  </>
 }
