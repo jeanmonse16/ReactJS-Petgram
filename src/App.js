@@ -1,23 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useContext, Suspense } from 'react'
 
 import { GlobalStyles } from './Styles/GlobalStyles'
 
 import { Logo } from './components/Logo'
-import { Detail } from './pages/Detail'
 import { Home } from './pages/Home'
 import { NavBar } from './components/NavBar'
-import { Favs } from './pages/Favs'
 import { LoggedIn } from './pages/LoggedIn'
-import { NotLoggedIn } from './pages/NotLoggedIn'
 import { NotFound } from './pages/NotFound'
 
 import { Context } from './Context'
 import { Router, Redirect } from '@reach/router'
+import { Loader } from './Styles/Loader'
+
+const Favs = React.lazy(() => import('./pages/Favs'))
+const Detail = React.lazy(() => import('./pages/Detail'))
+const NotLoggedIn = React.lazy(() => import('./pages/NotLoggedIn'))
 
 export const App = () => {
   const { isAuth } = useContext(Context)
   return (
-    <div>
+    <Suspense fallback={<Loader />}>
       <GlobalStyles />
       <Logo />
       <Router>
@@ -33,6 +35,6 @@ export const App = () => {
         <LoggedIn path='/user' />
       </Router>
       <NavBar />
-    </div>
+    </Suspense>
   )
 }

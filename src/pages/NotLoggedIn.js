@@ -5,7 +5,7 @@ import { RegisterMutation } from '../container/RegisterMutation'
 import { LoginMutation } from '../container/LoginMutation'
 import { Layout } from '../components/Layout'
 
-export const NotLoggedIn = () => {
+export default () => {
   const { activateUser } = useContext(Context)
   return <>
     <RegisterMutation>
