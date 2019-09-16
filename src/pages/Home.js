@@ -3,7 +3,7 @@ import { CategoryList } from '../components/CategoryList'
 import { PhotoCardList } from '../container/PhotoCardList'
 import { Helmet } from 'react-helmet'
 
-export const Home = ({ id }) => {
+const HomePage = ({ id }) => {
   return (
     <>
       <Helmet>
@@ -15,3 +15,7 @@ export const Home = ({ id }) => {
     </>
   )
 }
+
+export const Home = React.memo(HomePage, (prevProps, props) => {
+  return prevProps.categoryid === props.id
+})
