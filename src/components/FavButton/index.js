@@ -14,7 +14,7 @@ export const FavButton = ({ liked, likes, onClick }) => {
         <Icon size='32px' />
         {likes} likes!
       </Button>
-      {!isAuth && <Error>You need a registered user</Error>}
+      {!isAuth && <Error>Necesitas un usuario registrado para dar un "me gusta"</Error>}
     </>)
 }
 
