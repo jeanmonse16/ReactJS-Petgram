@@ -24,8 +24,6 @@ export const List = styled.ul`
     `}
   `
 
-
 export const Element = styled.li`
   padding: 0 8px;
 `
-
