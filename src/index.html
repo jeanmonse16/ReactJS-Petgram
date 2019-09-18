@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Petgram</title>
+</head>
+<body>
+      <div id="app" ></div>
+      <noscript>
+          <h1>Esta aplicación necesita JavaScript para funcionar</h1>
+      </noscript>
+      <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/service-worker.js')
+              .then(registration => {
+                console.log('SW registrado')
+              })
+              .catch(registrationError => {
+                console.log('SW error', registrationError)
+              })
+          })
+        }
+      </script>
+</body>
+</html>
