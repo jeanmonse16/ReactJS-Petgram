@@ -1,0 +1,6 @@
+{
+    "baseUrl": "https://petgram.monserrateluisje.now.sh",
+    "chromeWebSecurity": false,
+    "viewportWidth": 500,
+    "viewportHeigth": 800
+}
